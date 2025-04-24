@@ -1,0 +1,141 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 250 25% 98%;
+    --foreground: 250 10% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 250 10% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 250 10% 10%;
+
+    --primary: 260 32% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 250 16% 30%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 250 5% 90%;
+    --muted-foreground: 250 5% 45%;
+
+    --accent: 250 10% 90%;
+    --accent-foreground: 250 10% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 250 10% 80%;
+    --input: 250 10% 80%;
+    --ring: 260 32% 55%;
+
+    --radius: 0.75rem;
+    
+    --lightning-primary: 260 80% 50%;
+    --lightning-secondary: 260 70% 40%;
+    --lightning-yellow: 45 100% 50%;
+  }
+
+  .dark {
+    --background: 250 10% 8%;
+    --foreground: 250 10% 98%;
+
+    --card: 250 10% 12%;
+    --card-foreground: 250 10% 98%;
+
+    --popover: 250 10% 12%;
+    --popover-foreground: 250 10% 98%;
+
+    --primary: 260 32% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 250 16% 30%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 250 5% 20%;
+    --muted-foreground: 250 5% 65%;
+
+    --accent: 250 10% 20%;
+    --accent-foreground: 250 10% 98%;
+
+    --destructive: 0 62.8% 40.6%;
+    --destructive-foreground: 250 10% 98%;
+
+    --border: 250 10% 30%;
+    --input: 250 10% 30%;
+    --ring: 260 32% 55%;
+    
+    --lightning-primary: 260 80% 60%;
+    --lightning-secondary: 260 70% 50%;
+    --lightning-yellow: 45 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+  
+  .lightning-card {
+    @apply bg-white dark:bg-card rounded-xl shadow-md p-6 card-hover border border-border;
+  }
+  
+  .lightning-button {
+    @apply bg-[hsl(var(--lightning-primary))] hover:bg-[hsl(var(--lightning-secondary))] text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .lightning-input {
+    @apply bg-background border border-input rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-opacity-50 w-full;
+  }
+  
+  .lightning-flash {
+    @apply after:absolute after:inset-0 after:bg-[hsl(var(--lightning-yellow))] after:opacity-0 after:animate-lightning-flash relative;
+  }
+  
+  .bg-lightning-primary {
+    @apply bg-[hsl(var(--lightning-primary))];
+  }
+  
+  .bg-lightning-secondary {
+    @apply bg-[hsl(var(--lightning-secondary))];
+  }
+  
+  .bg-lightning-gradient {
+    @apply bg-gradient-to-r from-[hsl(var(--lightning-primary))] to-[hsl(var(--lightning-secondary))];
+  }
+}
+
+@keyframes lightning-flash {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  20% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@layer utilities {
+  .animate-lightning-flash {
+    animation: lightning-flash 2s ease-out;
+  }
+}
